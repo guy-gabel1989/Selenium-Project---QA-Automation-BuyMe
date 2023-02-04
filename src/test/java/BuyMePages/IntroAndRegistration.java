@@ -1,78 +1,90 @@
 package BuyMePages;
 
 import BaseFunctions.BasePage;
+import BaseFunctions.Locators;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 public class IntroAndRegistration extends BasePage {
     private WebDriver driver;
 
-    public void start(){
+    public void signUpOrInButton(){
         clickSignUp_SignInButton();
+
     }
-    public void clickSignUp(){
+    public void clickSignUp() {
         clickSignUpLink();
     }
-
-    public void password(){
+    public void nameFiled() {
+        fillNameBox();
+    }
+    public void emailFiled() {
+        fillEmailBox();
+    }
+    public void insertPasswords() {
         fillPasswords();
     }
 
-    public void nameBox(){
-        fillNameBox();
-    }
-    public void emailBox(){
-        fillEmailBox();
-    }
-
-    public void clickAndSubmit(){
+    public void checkRadioButton() {
         acceptTerms();
     }
-
-    public void compareEmail(){
-        compareEmailBoxs();
+    public void assetrtFileds() {
+        assertAllFeilds();
+    }
+    public void closeSignUp() {
+        closForm();
     }
 
-    private void clickSignUp_SignInButton(){
-        clickElement(By.xpath("//span[contains(text(),'כניסה / הרשמה')]"));
+
+
+    private void clickSignUp_SignInButton()  {
+        clickElement(Locators.SignInButton);
     }
 
-    private void clickSignUpLink(){
-        clickElement(By.xpath("//span[@class='text-link theme']"));
+    private void clickSignUpLink() {
+        clickElement(Locators.SignUpLink);
     }
 
-    private void fillNameBox(){
-        sendKeysToElement(By.id("ember1863"),("גרבר"));
+    private void fillNameBox() {
+        sendKeysToElement(Locators.NameBox, ("גרבר"));
+
     }
-    private void fillEmailBox(){
-        sendKeysToElement(By.xpath("//input[@placeholder='מייל']"), ("Darling@gsmurf.com"));
+    private void fillEmailBox() {
+        sendKeysToElement(Locators.EmailBox, ("Darling@gsmurf.com"));
     }
 
-    private void fillPasswords(){
-        sendKeysToElement(By.xpath("//input[@placeholder='סיסמה']"), ("passTest2023"));
-        sendKeysToElement(By.xpath("//input[@placeholder='אימות סיסמה']"), ("passTest2023"));
+    private void fillPasswords()  {
+        sendKeysToElement(Locators.Password, ("passTest2023"));
+        sendKeysToElement(Locators.confirmPassword, ("passTest2023"));
     }
 
-    private void acceptTerms(){
-        clickElement(By.xpath("//div[@id='ember1890']//span[@class='circle']//*[name()='svg']//*[name()='circle' and contains(@class,'fill')]"));
+    private void acceptTerms()  {
+        clickElement(Locators.radioButtonAcceptTerms);
     }
 
-    private void compareEmailBoxs(){
+    private void assertAllFeilds()  {
         String expectedEmail = "Darling@gsmurf.com";
-        String actualEmail = getResult(By.xpath("//input[@placeholder='מייל']"));
+        String actualEmail = getResult(Locators.EmailBox);
         Assert.assertEquals(actualEmail, expectedEmail);
 
+        String expectedName = "גרבר";
+        String actualName = getResult(Locators.NameBox);
+        Assert.assertEquals(actualName, expectedName);
+
+        String expectedPassword = "passTest2023";
+        String actualPassword = getResult(Locators.Password);
+        Assert.assertEquals(actualPassword, expectedPassword);
+
+        String expectedConfirmPassword = "passTest2023";
+        String actualConfirmPassword = getResult(Locators.confirmPassword);
+        Assert.assertEquals(actualConfirmPassword, expectedConfirmPassword);
+
     }
 
-
-
-
-
-
-
-
+    private void closForm() {
+        clickElement(By.cssSelector("span[title='סגירה']"));
+    }
 
 
 
