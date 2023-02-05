@@ -1,78 +1,91 @@
 package BuyMePages;
 
 import BaseFunctions.BasePage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import BaseFunctions.Locators;
 
 public class IntroAndRegistration extends BasePage {
+
     private WebDriver driver;
 
-    public void start(){
+
+    public void signUpOrInButton() throws Exception {
         clickSignUp_SignInButton();
+
     }
-    public void clickSignUp(){
+    public void clickSignUp() throws Exception {
         clickSignUpLink();
     }
-
-    public void password(){
+    public void nameFiled() throws Exception {
+        fillNameBox();
+    }
+    public void emailFiled() throws Exception {
+        fillEmailBox();
+    }
+    public void insertPasswords() throws Exception {
         fillPasswords();
     }
 
-    public void nameBox(){
-        fillNameBox();
-    }
-    public void emailBox(){
-        fillEmailBox();
-    }
-
-    public void clickAndSubmit(){
+    public void checkRadioButton() throws Exception {
         acceptTerms();
     }
-
-    public void compareEmail(){
-        compareEmailBoxs();
+    public void assetrtFileds() throws Exception {
+        assertAllFeilds();
+    }
+    public void closeSignUp() throws Exception {
+        closForm();
     }
 
-    private void clickSignUp_SignInButton(){
-        clickElement(By.xpath("//span[contains(text(),'כניסה / הרשמה')]"));
+
+
+    private void clickSignUp_SignInButton() throws Exception {
+        clickElement(Locators.SignInButton);
     }
 
-    private void clickSignUpLink(){
-        clickElement(By.xpath("//span[@class='text-link theme']"));
+    private void clickSignUpLink() throws Exception {
+        clickElement(Locators.SignUpLink);
     }
 
-    private void fillNameBox(){
-        sendKeysToElement(By.id("ember1863"),("גרבר"));
+    private void fillNameBox() throws Exception {
+        sendKeysToElement(Locators.NameBox, ("גרבר"));
+
     }
-    private void fillEmailBox(){
-        sendKeysToElement(By.xpath("//input[@placeholder='מייל']"), ("Darling@gsmurf.com"));
+    private void fillEmailBox() throws Exception {
+        sendKeysToElement(Locators.EmailBox, ("Darling@gsmurf.com"));
     }
 
-    private void fillPasswords(){
-        sendKeysToElement(By.xpath("//input[@placeholder='סיסמה']"), ("passTest2023"));
-        sendKeysToElement(By.xpath("//input[@placeholder='אימות סיסמה']"), ("passTest2023"));
+    private void fillPasswords() throws Exception {
+        sendKeysToElement(Locators.Password, ("passTest2023"));
+        sendKeysToElement(Locators.confirmPassword, ("passTest2023"));
     }
 
-    private void acceptTerms(){
-        clickElement(By.xpath("//div[@id='ember1890']//span[@class='circle']//*[name()='svg']//*[name()='circle' and contains(@class,'fill')]"));
+    private void acceptTerms() throws Exception {
+        clickElement(Locators.radioButtonAcceptTerms);
     }
 
-    private void compareEmailBoxs(){
+    private void assertAllFeilds() throws Exception {
         String expectedEmail = "Darling@gsmurf.com";
-        String actualEmail = getResult(By.xpath("//input[@placeholder='מייל']"));
+        String actualEmail = getResult(Locators.EmailBox);
         Assert.assertEquals(actualEmail, expectedEmail);
 
+        String expectedName = "גרבר";
+        String actualName = getResult(Locators.NameBox);
+        Assert.assertEquals(actualName, expectedName);
+
+        String expectedPassword = "passTest2023";
+        String actualPassword = getResult(Locators.Password);
+        Assert.assertEquals(actualPassword, expectedPassword);
+
+        String expectedConfirmPassword = "passTest2023";
+        String actualConfirmPassword = getResult(Locators.confirmPassword);
+        Assert.assertEquals(actualConfirmPassword, expectedConfirmPassword);
+
     }
 
-
-
-
-
-
-
-
+    private void closForm() throws Exception {
+        clickElement(Locators.closeSignUpForm);
+    }
 
 
 
