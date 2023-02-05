@@ -1,69 +1,70 @@
 package BuyMePages;
 
 import BaseFunctions.BasePage;
-import BaseFunctions.Locators;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import BaseFunctions.Locators;
 
 public class IntroAndRegistration extends BasePage {
+
     private WebDriver driver;
 
-    public void signUpOrInButton(){
+
+    public void signUpOrInButton() throws Exception {
         clickSignUp_SignInButton();
 
     }
-    public void clickSignUp() {
+    public void clickSignUp() throws Exception {
         clickSignUpLink();
     }
-    public void nameFiled() {
+    public void nameFiled() throws Exception {
         fillNameBox();
     }
-    public void emailFiled() {
+    public void emailFiled() throws Exception {
         fillEmailBox();
     }
-    public void insertPasswords() {
+    public void insertPasswords() throws Exception {
         fillPasswords();
     }
 
-    public void checkRadioButton() {
+    public void checkRadioButton() throws Exception {
         acceptTerms();
     }
-    public void assetrtFileds() {
+    public void assetrtFileds() throws Exception {
         assertAllFeilds();
     }
-    public void closeSignUp() {
+    public void closeSignUp() throws Exception {
         closForm();
     }
 
 
 
-    private void clickSignUp_SignInButton()  {
+    private void clickSignUp_SignInButton() throws Exception {
         clickElement(Locators.SignInButton);
     }
 
-    private void clickSignUpLink() {
+    private void clickSignUpLink() throws Exception {
         clickElement(Locators.SignUpLink);
     }
 
-    private void fillNameBox() {
+    private void fillNameBox() throws Exception {
         sendKeysToElement(Locators.NameBox, ("גרבר"));
 
     }
-    private void fillEmailBox() {
+    private void fillEmailBox() throws Exception {
         sendKeysToElement(Locators.EmailBox, ("Darling@gsmurf.com"));
     }
 
-    private void fillPasswords()  {
+    private void fillPasswords() throws Exception {
         sendKeysToElement(Locators.Password, ("passTest2023"));
         sendKeysToElement(Locators.confirmPassword, ("passTest2023"));
     }
 
-    private void acceptTerms()  {
+    private void acceptTerms() throws Exception {
         clickElement(Locators.radioButtonAcceptTerms);
     }
 
-    private void assertAllFeilds()  {
+    private void assertAllFeilds() throws Exception {
         String expectedEmail = "Darling@gsmurf.com";
         String actualEmail = getResult(Locators.EmailBox);
         Assert.assertEquals(actualEmail, expectedEmail);
@@ -82,8 +83,8 @@ public class IntroAndRegistration extends BasePage {
 
     }
 
-    private void closForm() {
-        clickElement(By.cssSelector("span[title='סגירה']"));
+    private void closForm() throws Exception {
+        clickElement(Locators.closeSignUpForm);
     }
 
 

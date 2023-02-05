@@ -1,9 +1,9 @@
 package BaseFunctions;
-
+import BaseFunctions.Constants;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.w3c.dom.Document;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
@@ -11,11 +11,26 @@ import java.io.File;
 public class DriverSingleton {
     private static WebDriver driver;
 
-    public static WebDriver getDriverInstance()  {
+    public static WebDriver getDriverInstance() throws Exception {
+
 
         if (driver == null){
-            System.setProperty("webdriver.chrome.driver", Constants.CHROMEDRIVER_PATH);
-            driver = new ChromeDriver();
+            String browser = getData("browserType");
+            switch (browser){
+                case "chrome":
+                    System.setProperty("webdriver.chrome.driver", Constants.CHROMEDRIVER_PATH);
+                    driver = new ChromeDriver();
+                    break;
+                case "FF":
+                    System.setProperty("webdriver.gecko.driver", Constants.FIREFOX_PATH);
+                    driver = new FirefoxDriver();
+                    break;
+                default:
+                    System.setProperty("webdriver.chrome.driver", Constants.CHROMEDRIVER_PATH);
+                    driver = new ChromeDriver();
+                    break;
+            }
+
         }
             return driver;
     }

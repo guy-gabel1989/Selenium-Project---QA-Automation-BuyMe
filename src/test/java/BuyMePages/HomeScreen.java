@@ -1,6 +1,7 @@
 package BuyMePages;
 
 import BaseFunctions.BasePage;
+import org.openqa.selenium.By;
 import BaseFunctions.Locators;
 
 public class HomeScreen extends BasePage {
@@ -11,7 +12,7 @@ public class HomeScreen extends BasePage {
 
     private void searchAndFilterItem() throws Exception {
         // open the "סכום" (amount) dropdown
-     clickElement(Locators.priceDropDown);
+     clickElement(Locators.amountDropDown);
      // Click "עד 99" (up to 99ILS) item
      clickElement(Locators.clickUpTo99);
      // Open "אזור" (region) dropdown
@@ -21,7 +22,7 @@ public class HomeScreen extends BasePage {
      // Open "קטגוריה" (Category) dropdown
      clickElement(Locators.categoryDropDown);
      // Click "גיפט קארד למסעדות שף" (gift card for chef restaurants) item
-     clickElement(Locators.clickChefRestaurants);
+     clickElement(Locators.clickChefResturants);
      // Click "תמצאו לי מתנה" (search) button
      clickElement(Locators.clickSearchGift);
 

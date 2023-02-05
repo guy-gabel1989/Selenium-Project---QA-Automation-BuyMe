@@ -1,33 +1,35 @@
 package BaseFunctions;
-
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
-
 import java.io.File;
 import java.io.IOException;
 
 public class BasePage {
-    public void clickElement(By locator)  {
+    public void clickElement(By locator) throws Exception {
         getWebElement(locator).click();
     }
 
-    public void findElement(By locator) {
+    public void findElement(By locator) throws Exception {
         getWebElement(locator);
     }
-    public void goToURL()  {
+    public void goToURL() throws Exception {
         DriverSingleton.getDriverInstance();
     }
 
-    public void sendKeysToElement(By locator, String text)  {
+    public void sendKeysToElement(By locator, String text) throws Exception {
         getWebElement(locator).sendKeys(text);
     }
 
 
-    public static String getResult(By locator)  {
+    public static String getResult(By locator) throws Exception {
         return DriverSingleton.getDriverInstance().findElement(locator).getAttribute("value");
     }
 
-    private WebElement getWebElement(By locator)  {
+    public static String getTitle () throws Exception {
+        return DriverSingleton.getDriverInstance().getCurrentUrl();
+    }
+
+    private WebElement getWebElement(By locator) throws Exception {
         return DriverSingleton.getDriverInstance().findElement(locator);
     }
     public static String takeScreenShot(WebDriver driver, String ImagesPath) {
