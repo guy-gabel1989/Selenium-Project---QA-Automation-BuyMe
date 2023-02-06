@@ -5,6 +5,15 @@ import org.testng.Assert;
 import BaseFunctions.Locators;
 
 public class PickBusiness extends BasePage {
+    /**
+     * This is the Third step of the whole test.
+     *
+     * After Comliting the second step this test begins with asserting the URL
+     * Since it's based on the privios step to provide the parameters for the search, the:
+     * @see HomeScreen class must complete first
+     *
+     * @throws Exception
+     */
     public void assertURL() throws Exception {
         assertPageURL();
     }

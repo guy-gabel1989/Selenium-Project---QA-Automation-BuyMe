@@ -3,6 +3,14 @@ package BaseFunctions;
 import org.openqa.selenium.By;
 
 public class Locators {
+    /**
+     * In this class we keep all the locators we're using in this program
+     *
+     *
+     * these locators are for this test
+     * @see BuyMePages.IntroAndRegistration
+     *
+     */
 
     public static final By NameBox = By.id("ember1863");
 public static final By SignInButton = By.xpath("//span[contains(text(),'כניסה / הרשמה')]");
@@ -17,19 +25,27 @@ public static final By confirmPassword = By.xpath("//input[@placeholder='אימ�
 public static final By radioButtonAcceptTerms = By.xpath("//div[@id='ember1890']//span[@class='circle']//*[name()='svg']//*[name()='circle' and contains(@class,'fill')]");
 public static final By closeSignUpForm = By.xpath("//span[@title='סגירה']");
 
-////////////////////////////
-//HomeScreen Locators
-///////////////////////////
-public static final By amountDropDown = By.cssSelector("div[class='selected-name'] span[alt='סכום']");
+
+    /**
+     * These are the Locators for this page test:
+     * @see BuyMePages.HomeScreen
+     */
+    public static final By amountDropDown = By.cssSelector("div[class='selected-name'] span[alt='סכום']");
 public static final By clickUpTo99 = By.xpath("//li[@value='2']");
 public static final By regionDropDown = By.xpath("//label[@id='ember1088']//div[@class='selected-name']");
 public static final By clickNorth = By.xpath("(//span[contains(text(),'צפון')])");
 public static final By categoryDropDown =  By.cssSelector("label[id='ember1120'] div[class='selected-name']");
 public static final By clickChefResturants = By.xpath("//span[contains(text(),'גיפט קארד למסעדות שף')]");
 public static final By clickSearchGift = By.xpath("//a[@id='ember1199']");
-///////////////////////////////
-//*PickBusinees Class locators
-///////////////////////////////
+
+
+
+
+
+    /**
+     * These are the locators for this page:
+     * @see BuyMePages.PickBusiness
+     */
  public static final By clickRestaurant = By.xpath("(//span[@class='name bm-subtitle-1'])[5]");
 public static final By clickCouplesChefDeal = By.cssSelector("button[id='ember2086']");
 
@@ -37,6 +53,7 @@ public static final By clickCouplesChefDeal = By.cssSelector("button[id='ember20
 //Send And Receiver test locators
 ///////////////////////////////
 
+    //<-------------First Screen------------>
     public static final By receiversName = By.xpath("(//input[@id='ember1373'])[1]");
     public static final By whichEventDropDown = By.xpath("(//div[@class='selected-name'])[1]");
     public static final By thanksEventDropDown = By.xpath("(//span[contains(text(),'תודה')])[1]");
@@ -49,6 +66,8 @@ public static final By clickCouplesChefDeal = By.cssSelector("button[id='ember20
     public static final By RadioButtonNow = By.xpath("(//*[name()='circle'][@class='check'])[1]");
     public static final By SMS = By.xpath("(//*[name()='path'][@class='circle'])[1]");
     public static final By PhoneNumber = By.xpath("//input[@placeholder='נייד מקבל/ת המתנה']");
+    public static final By SenderName = By.xpath("//input[@placeholder='שם שולח המתנה']");
+    public static final By SenderPhoneNumber = By.xpath("//input[@placeholder='מספר נייד']");
 
 
 

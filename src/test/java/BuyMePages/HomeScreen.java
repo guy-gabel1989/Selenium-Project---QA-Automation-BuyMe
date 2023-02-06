@@ -5,6 +5,13 @@ import org.openqa.selenium.By;
 import BaseFunctions.Locators;
 
 public class HomeScreen extends BasePage {
+    /**
+     * This is the Second step in the test. This Class is testng the home pages filter and search bar
+     * it uses the clickElement to chose items and click search
+     *
+     *
+     * @throws Exception
+     */
 
     public void filterAndSearch() throws Exception {
         searchAndFilterItem();

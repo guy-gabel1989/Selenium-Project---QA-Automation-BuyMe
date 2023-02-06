@@ -9,18 +9,29 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
+import BaseFunctions.DriverSingleton;
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 
 public class POM_BuyMe extends DriverSingleton {
+    /**
+     *Automation sanity test for the website BuyMe.co.il
+     * @author Guy Gabel
+     * @version 1.0
+     * This is the Main page of the program
+     * all thge tests runs in it using TesnNG library
+     * @see ExtentReports  - the library it uses to genarate reports
+     * @see DriverSingleton - the classs that intiate the webdriver (detirmened by the Data.xml file
+     *
+     */
     private static ExtentReports extent= new ExtentReports();
     private static ExtentTest test = extent.createTest("BuyMe - Automation test", "QA Automation test for https://buyme.co.il/");
 
@@ -35,16 +46,15 @@ public class POM_BuyMe extends DriverSingleton {
             extent.attachReporter(htmlReporter);
             this.driver = DriverSingleton.getDriverInstance();
             test.log(Status.INFO,"driver invoked");
-
-
-            driver.get("https://buyme.co.il/");
+            driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(15));
+            driver.get(getData("URL"));
             test.log(Status.INFO, "BuyMe.co.il entered");
     }
 
     @Test (priority = 0)
 
     public void TestSignup() throws Exception {
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(15));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         IntroAndRegistration introAndRegistration = new IntroAndRegistration();
         test.log(Status.INFO, "Test 1 - signUp sanity test start");
         try {
@@ -74,19 +84,24 @@ public class POM_BuyMe extends DriverSingleton {
 
      @Test (priority = 1)
      public void TestHomePage() throws Exception {
-//            STEP b - Home Screen
-//         This test is runs in the websites homepage
-//         The test is for the price/regin/ category filter search, all the actions int the test sits inside the
-//         "filterAndSearch" method, these are the steps:
-//         1.click the price and chose the "up to 99 ILS option
-//         2.click the regin dropdown and click "north"
-//         3.click the category dropdown and click "gift card for chef restaurants"
-//
-//
+         /**
+          *  STEP b - Home Screen
+          *          This test is runs in the website's homepage
+          *          The test is for the price/regin/ category filter search, all the actions int the test sits inside the
+          *          "filterAndSearch" method, these are the steps:
+          *          1.click the price and chose the "up to 99 ILS option
+          *          2.click the regin dropdown and click "north"
+          *        3.click the category dropdown and click "gift card for chef restaurants"
+          *
+          */
+
+
+
          driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(15));
-            driver.get("https://buyme.co.il/");
+            driver.get(getData("URL"));
          HomeScreen homeScreen = new HomeScreen();
          try {
+             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
              homeScreen.filterAndSearch();
              test.log(Status.PASS, "HomeScreen filter and search test complete");
          }catch (Exception e){
@@ -98,15 +113,16 @@ public class POM_BuyMe extends DriverSingleton {
 
      }
 
-     @Test
+     @Test (priority = 2)
      public void pickABusiness(){
-//            STEP C - Pick business
-//            This class is testing the page the user lands after the test of "homeScreen":
-//         1. Assert the user with a string that holds the expected URL with the current URL
-//         2. click an item from the suggested option
-//         3. clicks a gift and finish the test for this page
-//
-//
+/**
+ * STEP C - Pick business
+ *            This class is testing the page the user lands after the test of "homeScreen":
+ *         1. Assert the user with a string that holds the expected URL with the current URL
+ *         2. click an item from the suggested option
+ *         3. clicks a gift and finish the test for this page
+ */
+
          PickBusiness pickBusiness = new PickBusiness();
          // this line is added in order to run this test independently
          //assuming all the locator works and all the tests before pass I would remove it, since it's not the case - I've added it.
@@ -115,6 +131,7 @@ public class POM_BuyMe extends DriverSingleton {
          test.log(Status.INFO, "Testing PickBusiness strarted");
 
          try {
+             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
              pickBusiness.assertURL();
              test.log(Status.PASS, "URL asserted as expected");
              pickBusiness.chooseHelenaRestaurant();
@@ -130,18 +147,43 @@ public class POM_BuyMe extends DriverSingleton {
          }
      }
 
-     @Test
+     @Test (priority = 3)
      public void sendAndRreciverGift() throws Exception {
+         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(15));
             driver.get("https://buyme.co.il/package/335223/781184");
-         SendReceiveScreen sendReceiveScreen = new SendReceiveScreen();
-         sendReceiveScreen.fillReciversName();
-         sendReceiveScreen.choseEventType();
-         sendReceiveScreen.clickThanksOption();
-         sendReceiveScreen.addTextTogift();
-         sendReceiveScreen.uploadPicture();
-         sendReceiveScreen.clickContinue();
-         sendReceiveScreen.clickRadioButtonNow();
-         sendReceiveScreen.addSMSnumber();
+            test.log(Status.INFO, "Send and reciver test started");
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            try {
+                //   <--------First Screen---------------->
+                SendReceiveScreen sendReceiveScreen = new SendReceiveScreen();
+                sendReceiveScreen.fillReciversName();
+                test.log(Status.PASS, "reciver name inserted");
+                sendReceiveScreen.choseEventType();
+                test.log(Status.PASS, "Event Type dropdown clicked");
+                sendReceiveScreen.clickThanksOption();
+                test.log(Status.PASS, "Event Type clicked ");
+                sendReceiveScreen.addTextTogift();
+                test.log(Status.PASS, "Added text to gift");
+                sendReceiveScreen.uploadPicture();
+                test.log(Status.PASS, "Picture uploaded successfully");
+                sendReceiveScreen.assertFirstPage();
+                test.log(Status.PASS, "First screen aseert pass");
+                sendReceiveScreen.clickContinue();
+                test.log(Status.PASS,"Clicked continue");
+                //   <--------Second Screen---------------->
+                sendReceiveScreen.clickRadioButtonNow();
+                test.log(Status.PASS, "Radio button 'Now' clicked");
+                sendReceiveScreen.addSMSnumber();
+                test.log(Status.PASS, "Reciver phone number added");
+                sendReceiveScreen.senderNameAndPhone();
+                test.log(Status.PASS, "Sender name and phone added");
+                sendReceiveScreen.assertSecondPage();
+                test.log(Status.PASS,"Second page assertion passed");
+            }catch (Exception e){
+                e.printStackTrace();
+                test.fail("sendAndRreciver Test fail");
+                MediaEntityBuilder.createScreenCaptureFromPath(takeScreenShot(timeNow)).build();
+            }
 
      }
 
@@ -149,7 +191,7 @@ public class POM_BuyMe extends DriverSingleton {
 
     @AfterClass
     public void afterClass(){
-//            driver.quit();
+            driver.quit();
             extent.flush();
     }
 

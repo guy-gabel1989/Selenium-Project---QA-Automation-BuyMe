@@ -5,6 +5,14 @@ import java.io.File;
 import java.io.IOException;
 
 public class BasePage {
+    /**
+     * This class is an extension for all the tested pages
+     * it contains all the most used selenium actions
+     * all the actions receive the driver from the getWebElement, that element gets the driver from the
+     * @see DriverSingleton class
+     * @param locator
+     * @throws Exception
+     */
     public void clickElement(By locator) throws Exception {
         getWebElement(locator).click();
     }
@@ -19,10 +27,15 @@ public class BasePage {
     public void sendKeysToElement(By locator, String text) throws Exception {
         getWebElement(locator).sendKeys(text);
     }
+    public void clearText(By locator) throws Exception {
+        getWebElement(locator).clear();
+    }
 
-
-    public static String getResult(By locator) throws Exception {
+    public static String getValue(By locator) throws Exception {
         return DriverSingleton.getDriverInstance().findElement(locator).getAttribute("value");
+    }
+    public static String getText(By locator) throws Exception {
+        return DriverSingleton.getDriverInstance().findElement(locator).getText();
     }
 
     public static String getTitle () throws Exception {
@@ -31,17 +44,5 @@ public class BasePage {
 
     private WebElement getWebElement(By locator) throws Exception {
         return DriverSingleton.getDriverInstance().findElement(locator);
-    }
-    public static String takeScreenShot(WebDriver driver, String ImagesPath) {
-        TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
-        File screenShotFile = takesScreenshot.getScreenshotAs(OutputType.FILE);
-        File destinationFile = new File(ImagesPath + ".png");
-        try {
-            FileUtils.copyFile(screenShotFile, destinationFile);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-
-        return ImagesPath + ".png";
     }
 }
