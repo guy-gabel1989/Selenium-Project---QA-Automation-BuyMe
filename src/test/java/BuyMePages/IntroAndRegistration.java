@@ -7,6 +7,20 @@ import BaseFunctions.Locators;
 
 public class IntroAndRegistration extends BasePage {
 
+    /**
+     * This is the first step of the page
+     * it's simulating a user completing a sign-up from the home page
+     *steps:
+     * 1. click the "signin/signup" button
+     * 2. click signup
+     * 3. fill the signup form
+     * 4. asserting all the fields (see the assertAllFields method at the button of this class
+     *
+     * the test is being executed here: POM_BuyMe (main test class)
+     *
+     *
+     */
+
     private WebDriver driver;
 
 
@@ -66,19 +80,19 @@ public class IntroAndRegistration extends BasePage {
 
     private void assertAllFeilds() throws Exception {
         String expectedEmail = "Darling@gsmurf.com";
-        String actualEmail = getResult(Locators.EmailBox);
+        String actualEmail = getValue(Locators.EmailBox);
         Assert.assertEquals(actualEmail, expectedEmail);
 
         String expectedName = "גרבר";
-        String actualName = getResult(Locators.NameBox);
+        String actualName = getValue(Locators.NameBox);
         Assert.assertEquals(actualName, expectedName);
 
         String expectedPassword = "passTest2023";
-        String actualPassword = getResult(Locators.Password);
+        String actualPassword = getValue(Locators.Password);
         Assert.assertEquals(actualPassword, expectedPassword);
 
         String expectedConfirmPassword = "passTest2023";
-        String actualConfirmPassword = getResult(Locators.confirmPassword);
+        String actualConfirmPassword = getValue(Locators.confirmPassword);
         Assert.assertEquals(actualConfirmPassword, expectedConfirmPassword);
 
     }
