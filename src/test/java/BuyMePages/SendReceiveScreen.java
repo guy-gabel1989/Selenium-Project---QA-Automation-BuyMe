@@ -17,10 +17,12 @@ public class SendReceiveScreen extends BasePage {
      *
      * @throws Exception
      */
+    //fill the gift reciver name
     public void fillReciversName() throws Exception {
         fillReceiversName();
     }
 
+    //chose an ebnt type for the gift
     public void choseEventType() throws Exception {
         clickEventTypeDropDown();
     }
@@ -28,28 +30,36 @@ public class SendReceiveScreen extends BasePage {
     public void clickThanksOption() throws Exception {
         choseThanksOption();
     }
+    // add a text in the "add a letter to yopr gift" textBox
     public void addTextTogift() throws Exception {
         textToGift();
     }
+    // upload a png image to the "add a photo" filed
     public void uploadPicture() throws Exception {
         uploadPic();
     }
+    //assertion test to of the textBoxs before continuing to the next screen
     public void assertFirstPage() throws Exception {
         firstPageAssert();
     }
+    //submit first screen ang continue to the next screen
     public void clickContinue() throws Exception {
         counitue();
     }
+    // click the"send later radio button and then back to "send gift now" radio button
     public void clickRadioButtonNow() throws Exception {
         checkRadioNow();
     }
+    //add the gift receiver number
     public void addSMSnumber() throws Exception {
         addSMSnum();
     }
+   // add the senders name and phone number
     public void senderNameAndPhone() throws Exception {
         addSenderName();
         addSenderPhone();
     }
+  //assert all the fields in the second screen
     public void assertSecondPage() throws Exception {
         secondPageAssertion();
     }

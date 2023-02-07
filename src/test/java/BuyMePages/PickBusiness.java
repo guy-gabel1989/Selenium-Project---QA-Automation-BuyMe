@@ -14,13 +14,16 @@ public class PickBusiness extends BasePage {
      *
      * @throws Exception
      */
+    //a Method that assert thge pages url to make sure the user lands in the right place in the website
     public void assertURL() throws Exception {
         assertPageURL();
     }
 
+   // chose an item on the page
     public void chooseHelenaRestaurant() throws Exception {
         choseGift();
     }
+    //chose an item on the page (last step in the test)
     public void chooseDoubleChefDeal() throws Exception {
         clickChefDeal();
     }

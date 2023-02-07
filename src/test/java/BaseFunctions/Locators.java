@@ -47,13 +47,16 @@ public static final By clickSearchGift = By.xpath("//a[@id='ember1199']");
      * @see BuyMePages.PickBusiness
      */
  public static final By clickRestaurant = By.xpath("(//span[@class='name bm-subtitle-1'])[5]");
-public static final By clickCouplesChefDeal = By.cssSelector("button[id='ember2086']");
+public static final By clickCouplesChefDeal = By.xpath("//div[@id='ember3029']//span[@class='bm-body-1 text-link theme']");
 
-///////////////////////////////
-//Send And Receiver test locators
-///////////////////////////////
+    /**
+     * Send And Receiver test locators for this test:
+     * @see BuyMePages.SendReceiveScreen
+     *
+     */
 
-    //<-------------First Screen------------>
+
+    //<-------------First Screen locators------------>
     public static final By receiversName = By.xpath("(//input[@id='ember1373'])[1]");
     public static final By whichEventDropDown = By.xpath("(//div[@class='selected-name'])[1]");
     public static final By thanksEventDropDown = By.xpath("(//span[contains(text(),'תודה')])[1]");
@@ -61,7 +64,7 @@ public static final By clickCouplesChefDeal = By.cssSelector("button[id='ember20
     public static final By DropImage = By.xpath("(//input[@accept='image/png,image/jpeg,video/quicktime,video/mp4,.mov,.qt'])[1]");
     public static final By ClickContinue = By.xpath("(//button[@type='submit'])[1]");
 
-    //<-------------Next Screen------------>
+    //<-------------Next Screen locators----------->
     public static final By RadioButtonLater = By.xpath("(//*[name()='circle'][@class='check'])[2]");
     public static final By RadioButtonNow = By.xpath("(//*[name()='circle'][@class='check'])[1]");
     public static final By SMS = By.xpath("(//*[name()='path'][@class='circle'])[1]");

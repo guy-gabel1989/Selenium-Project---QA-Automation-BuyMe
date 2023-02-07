@@ -50,7 +50,7 @@ public class DriverSingleton {
             return driver;
     }
 
-    protected static String getData(String keyName) throws Exception{
+    public static String getData(String keyName) throws Exception{
         File fXmlFile = new File("C:\\Users\\USER\\OneDrive\\Desktop\\Java\\Automation test-BuyMe\\src\\main\\resources\\Data.xml");
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
