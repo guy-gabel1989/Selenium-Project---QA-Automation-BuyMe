@@ -74,7 +74,8 @@ public class POM_BuyMe extends DriverSingleton {
 
     @Test (priority = 0)
     /**
-     * Step 1 - test the Signup flow
+     * Step A - Intro & Registration screen
+     * test the Signup flow
      * @see introAndRegistration - were the test steps are progremed.
      *
      */
@@ -110,7 +111,7 @@ public class POM_BuyMe extends DriverSingleton {
      @Test (priority = 1)
      public void TestHomePage() throws Exception {
          /**
-          *  STEP b - Home Screen
+          *  STEP B - Home Screen
           *          This test is runs in the website's homepage
           *          The test is for the price/regin/ category filter search, all the actions int the test sits inside the
           *          "filterAndSearch" method, these are the steps:
