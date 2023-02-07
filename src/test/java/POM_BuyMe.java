@@ -189,7 +189,6 @@ public class POM_BuyMe extends DriverSingleton {
           * driver.get("https://buyme.co.il/package/335223/781184");
            */
 
-         driver.get("https://buyme.co.il/package/335223/781184");
          test.log(Status.INFO, "Test 4 - Send and reciver test started");
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
             try {
