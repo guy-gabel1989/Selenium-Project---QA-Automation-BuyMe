@@ -155,7 +155,6 @@ public class POM_BuyMe extends DriverSingleton {
          /**
           *          assuming all the locator works and all the tests before passed, this test should start from the currect place on the website
           *          in case you want to run Step C individually - uncomment this line:
-          *          div[@id='ember3029']//span[@class='bm-body-1 text-link theme']
           *          driver.get("https://buyme.co.il/search?budget=2&category=16&region=9");
           */
          test.log(Status.INFO, "Test 3 -Testing PickBusiness started");
