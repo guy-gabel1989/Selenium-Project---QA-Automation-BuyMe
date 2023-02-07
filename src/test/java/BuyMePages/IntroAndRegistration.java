@@ -24,29 +24,37 @@ public class IntroAndRegistration extends BasePage {
     private WebDriver driver;
 
 
+   //in the homepage - click the "SignIn/signup button in the header menu
     public void signUpOrInButton() throws Exception {
         clickSignUp_SignInButton();
 
     }
+    //inside the signIn page- click the signUp link
     public void clickSignUp() throws Exception {
         clickSignUpLink();
     }
+    //fill the name textBox
     public void nameFiled() throws Exception {
         fillNameBox();
     }
+    //Fill the email textBox
     public void emailFiled() throws Exception {
         fillEmailBox();
     }
+   //fill the passWord tesxBox
     public void insertPasswords() throws Exception {
         fillPasswords();
     }
 
+    //click check on the radio bottton (agree to T&C's)
     public void checkRadioButton() throws Exception {
         acceptTerms();
     }
+    // Assertion test on all the filled
     public void assetrtFileds() throws Exception {
         assertAllFeilds();
     }
+    //Close the signUp form to go back to homepage
     public void closeSignUp() throws Exception {
         closForm();
     }
